@@ -1,0 +1,14 @@
+version: "2.2"
+services:
+  elasticsearch-hq-service:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "elastichq/elasticsearch-hq"
+    mem_limit: "128m"
+    restart: on-failure:3
+    container_name: "cr_elasticsearch-hq-run-1"
+    expose:
+      - "5000"
+    environment: 
+      HQ_DEFAULT_URL: http://blue-elasticsearch.service.imanagecloud.com:9950  

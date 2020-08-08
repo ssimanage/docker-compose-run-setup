@@ -1,0 +1,15 @@
+version: "2.2"
+services:
+  reprocessing-ui:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "reprocessing-ui:latest"
+    container_name: "cr_reprocessing-ui-run-1"
+    ports:
+      - 80
+    mem_limit: "1024m"
+    restart: on-failure:12
+    environment:
+      SERVICE_80_NAME: "reprocessing-ui"
+      IS_MAX_SCALE: "false"

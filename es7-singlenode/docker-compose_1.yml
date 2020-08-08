@@ -1,0 +1,21 @@
+version: "2.2"
+services:
+  elasticsearchvmaster1:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "elasticsearch7:latest"
+    mem_limit: "1536m"
+    restart: on-failure:12
+    environment:
+      RACK_ID: "rack2"
+      SERVER_ID: "pacific"
+      DISK_ID: "disk201"
+      NODE_NAME: "vmaster1"
+      ES_CLUSTER_NAME: venus-${DISCOVERY_HOST}
+      ES_NETWORKING: "bridged"
+      SERVICE_9900_NAME: "venus-elasticsearchtransport"
+      SERVICE_9950_NAME: "venus-elasticsearch"
+      NODE_TYPE: allinone
+      DOCKER_FIX: '                                        '
+      POD_NAME: "red"

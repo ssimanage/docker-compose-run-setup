@@ -1,0 +1,58 @@
+version: "2.2"
+services:
+  elasticsearchblue1: &es-master
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "elasticsearch6"
+    mem_limit: "1024m"
+    restart: on-failure:12
+    volumes:
+      - "/var/log/es/snapshots/backup/blue:/snapshots/backup"
+    environment:
+      ES_CLUSTER_NAME: blue-${DISCOVERY_HOST}
+      ES_NETWORKING: "bridged"
+      SERVICE_9900_NAME: "blue-elasticsearchtransport"
+      SERVICE_9950_NAME: "blue-elasticsearch"
+      NODE_TYPE: master_and_data
+      DOCKER_FIX: '                                        '
+
+  elasticsearchblue2:
+    <<: *es-master
+
+  elasticsearchblue3:
+    <<: *es-master
+
+  elasticsearchdatablue1: &es-data
+    <<: *es-master
+    environment:
+      ES_CLUSTER_NAME: blue-${DISCOVERY_HOST}
+      ES_NETWORKING: "bridged"
+      SERVICE_9900_NAME: "blue-elasticsearchtransport"
+      SERVICE_9950_NAME: "blue-elasticsearch"
+      CLUSTER_NAME: "blue"
+      NODE_TYPE: data
+
+  elasticsearchdatablue2:
+    <<: *es-data
+
+  elasticsearchdatablue3:
+    <<: *es-data
+
+  elasticsearchdatablue4:
+    <<: *es-data
+
+  elasticsearchdatablue5:
+    <<: *es-data
+
+  elasticsearchdatablue6:
+    <<: *es-data
+
+  elasticsearchdatablue7:
+    <<: *es-data
+
+  elasticsearchdatablue8:
+    <<: *es-data
+
+  elasticsearchdatablue9:
+    <<: *es-data

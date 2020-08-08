@@ -1,0 +1,13 @@
+version: "2.2"
+services:
+  conductor-job-invoker:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "conductor-job-invoker:latest"
+    container_name: "cr_conductor-job-invoker-run-1"
+    mem_limit: "128m"
+    restart: on-failure:3
+    environment:
+      PAYLOAD: '{}'
+    

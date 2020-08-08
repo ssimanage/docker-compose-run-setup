@@ -1,0 +1,15 @@
+version: "2.2"
+services:
+ venus-bootstrapper-service:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "es7-bootstrapper"
+    container_name: "cr_bootstrapper-service-run-1"
+    mem_limit: "128m"
+    restart: on-failure:12
+    environment:
+      ES_SCHEME: "https"
+      ES_HOST: "venus-elasticsearch.service.imanagecloud.com"
+      ES_PORT: "9950"
+      ES_VAULT_PATH: "venus-elasticsearch/root_credentials"

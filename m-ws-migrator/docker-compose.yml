@@ -1,0 +1,16 @@
+version: "2.2"
+services:
+  # these are currently the documents used in com.imanage.dm.controllers.v2.DocumentIT.testHighlights
+  ws-migrator-reindex-ajuba-documents-1:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "m-ws-migrator:latest"
+    container_name: "cr_ws-migrator-reindex-ajuba-documents-run-1"
+    mem_limit: "128m"
+    restart: on-failure:12
+    entrypoint: "python /ws-migrator/request-reindex.py 1 ACTIVE LIBRARY0 104 --type documents"
+    environment:
+        TERM: "dumb"
+        DISCOVERY_HOST: "${DISCOVERY_HOST}"
+        MARIADB_HOST: "work-mariadb.service.imanagecloud.com"

@@ -1,0 +1,19 @@
+version: "2.2"
+services:
+  vault-dev:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "registry.imanage.com/m-vault-dev:latest"
+    container_name: "cr_vault-dev-run-1"
+    restart: on-failure:12
+    cap_add:
+      - IPC_LOCK
+
+  vault-bootstrap:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "registry.imanage.com/m-vault-dev-bootstrap:latest"
+    container_name: "cr_vault-bootstrap-run-1"
+    restart: on-failure:12

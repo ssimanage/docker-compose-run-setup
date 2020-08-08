@@ -1,0 +1,10 @@
+version: "2.2"
+services:
+  grafana-service:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "m-grafana:latest"
+    container_name: "cr_grafana-service-run-1"
+    restart: on-failure:3
+    container_name: "cr_grafana-1"

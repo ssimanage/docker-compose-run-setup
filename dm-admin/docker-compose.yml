@@ -1,0 +1,15 @@
+version: "2.2"
+services:
+  dmadmin-namedindex:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "elasticsearch-dm-admin"
+    container_name: "cr_dmadmin-namedindex-run-1"
+    mem_limit: "1024m"
+    restart: on-failure:12
+    environment:
+      - ELASTIC_HOSTNAME=venus-elasticsearch.service.imanagecloud.com
+      - INDEX_URI=dmindex://venus-elasticsearch.service.imanagecloud.com/pod2
+      - NUM_SHARDS=1
+      - OLD_NEW_SPLIT=1:2

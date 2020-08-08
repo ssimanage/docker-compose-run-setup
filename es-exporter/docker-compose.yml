@@ -1,0 +1,15 @@
+version: "2.2"
+services:
+  elasticsearch-exporter-service:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "elasticsearch-exporter"
+    mem_limit: "128m"
+    restart: on-failure:3
+    container_name: "cr_elasticsearch-exporter-run-1"
+    environment:
+      ES_SCHEME: "https"
+      ES_HOST: "venus-elasticsearch.service.imanagecloud.com"
+      ES_PORT: "9950"
+    

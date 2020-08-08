@@ -1,0 +1,14 @@
+version: "2.2"
+services:
+  languagedetection:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "registry.imanage.com/m-language-detection-server:prod"
+    container_name: "cr_languagedetection-run-1"
+    mem_limit: "2048m"
+    restart: on-failure:12
+    scale: 10
+    environment:
+      - PORT0=${MA_SERVICE_PORT_LANGUAGE_DETECTOR}
+      - TASK_HOST=0.0.0.0

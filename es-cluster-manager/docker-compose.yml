@@ -1,0 +1,14 @@
+version: "2.2"
+services:
+  es-cluster-manager:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "elasticsearch-cluster-manager"
+    mem_limit: "1024m"
+    restart: on-failure:1
+    container_name: "cr_elasticsearch-cluster-manager-run-1"
+    environment:
+      ACTION: "clear_vacate_es_nodes"
+      CLUSTER_NAME: "blue"
+      ES_EXCLUDE_NODE_NAMES: "FX2D2WT,7QrWPh0"

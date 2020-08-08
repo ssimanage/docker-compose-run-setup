@@ -1,0 +1,16 @@
+version: "2.2"
+services:
+  ocr-standalone:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "m-ocr-standalone"
+    container_name: "cr_ocr-standalone-run-1"
+    mem_limit: "4G"
+    restart: on-failure:3
+    scale: 3
+    environment:
+      OCR_SERVER_IP_HOST: "localhost"
+      OCR_SERVER_PORT: "11080"
+      WAIT_TIME_FOR_RESPONSE: "30" # mins
+      WAIT_TIME_BETWEEN_CHECK: "1" # mins

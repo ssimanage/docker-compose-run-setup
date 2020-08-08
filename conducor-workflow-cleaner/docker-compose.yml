@@ -1,0 +1,16 @@
+version: "2.2"
+services:
+  conductor-workflow-cleaner:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "conductor-workflow-cleaner:latest"
+    container_name: "cr_conductor-workflow-cleaner-run-1"
+    ports:
+      - 80
+    mem_limit: "1024m"
+    restart: on-failure:12
+    environment:
+      SERVICE_80_NAME: "conductor-workflow-cleaner"
+      TERMINATE_ALL_WORKFLOWS: "Y"
+      WORK_FLOW_NAME: "ocr_flow"
