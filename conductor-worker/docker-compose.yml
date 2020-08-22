@@ -4,9 +4,9 @@ services:
     extends:
       file: "common.yml"
       service: "common"
-    image: "conductor-worker"
+    image: "conductor-worker:latest"
     container_name: "cr_conductor-worker-run-1"
     mem_limit: "1024m"
     restart: on-failure:2
     environment:
-      - SERVICE_5000_NAME: "conductor-worker"
+      SERVICE_5000_NAME: "conductor-worker"
