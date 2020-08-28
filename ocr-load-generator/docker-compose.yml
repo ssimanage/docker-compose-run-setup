@@ -1,0 +1,13 @@
+version: "2.2"
+services:
+  ocr-load-gen:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "ocr-load-generator-docker:latest"
+    container_name: "cr_ocr-load-generator-run-1"
+    mem_limit: "512m"
+    restart: on-failure:2
+    environment:
+      TOTAL_UPLOAD_TASKS: "150"
+      MAX_TIME_LIMIT_MINS: "30"
