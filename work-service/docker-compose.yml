@@ -1,0 +1,25 @@
+version: "2.2"
+services:
+  work-service:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "m-work-service:latest"
+    container_name: "cr_work-service-run-1"
+    mem_limit: "3G"
+    restart: on-failure:12
+    environment:
+      CLEANROOM : "true"
+      DISCOVERY_HOST: "${DISCOVERY_HOST}"
+      DMS_APP_CLUSTER : "ac1"
+      JAVA_OPTS: "-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8888 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+      LOG_LEVEL : "INFO"
+      LOG_LEVEL_CACHE : "INFO"
+      SERVICE_9007_NAME : "ac1-dms"
+      SMTP_HOST:
+      SMTP_PASSWORD:
+      SMTP_PORT:
+      SMTP_USER:
+    labels:
+      SERVICE_9007_CHECK_INTERVAL: "30s"
+      SERVICE_9007_CHECK_TIMEOUT: "5s"
