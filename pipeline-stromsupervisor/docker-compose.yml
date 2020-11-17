@@ -1,0 +1,21 @@
+version: "2.2"
+services:
+  stormsupervisor:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "registry.imanage.com/imanagelabs/m-storm-supervisor:2.0.22"
+    mem_limit: "1536m"
+    volumes:
+      - "/var/log/storm-supervisor:/var/log/storm"
+    environment:
+      NUM_NIMBUSES: 1
+      NUM_WORKERS: 2
+      PORT0: 6700
+      PORT1: 6701
+      PORT2: 6702
+      PORT3: 6703
+      PORT4: 6710
+      ENABLE_CONDUCTOR_FOR_OCR_MANAGEMENT: "false"
+      SKIP_LIBRARY_IDS_FOR_INDEX: '[]'
+    
