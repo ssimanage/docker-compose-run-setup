@@ -1,0 +1,18 @@
+version: "2.2"
+services:
+  work-io:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "cloud-work-io-service:latest"
+    container_name: "cr_cloud-work-io-service-run-1"
+    mem_limit: "1024m"
+    restart: on-failure:2
+    environment:
+      PORT0: 9000
+      CLEANROOM: "true"
+      JAVA_OPTS: "-javaagent:/opt/docker/bin/jacoco-agent.jar=output=tcpserver,address=*,port=9003"
+    labels:
+      SERVICE_9000_CHECK_INTERVAL: "5s"
+      SERVICE_9000_CHECK_TIMEOUT: "2s"  
+      SERVICE_9000_NAME: "workio"
