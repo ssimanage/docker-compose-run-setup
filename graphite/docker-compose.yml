@@ -1,0 +1,9 @@
+version: "2.2"
+services:
+  grafana-service:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "m-graphite:latest"
+    container_name: "cr_graphite-service-run-1"
+    restart: on-failure:3
