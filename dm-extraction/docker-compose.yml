@@ -4,10 +4,10 @@ services:
     extends:
       file: "common.yml"
       service: "common"
-    image: "m-extraction:latest"
+    image: "registry.imanage.com/m-extraction:1.2.60"
     mem_limit: "1024m"
     restart: on-failure:3
-    scale: 3
+    scale: 1
     environment:
       OCR_ENABLED: "false"
       SERVICE_LOG_LEVEL: "INFO"
