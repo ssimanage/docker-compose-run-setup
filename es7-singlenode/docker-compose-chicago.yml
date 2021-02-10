@@ -1,0 +1,21 @@
+version: "2.2"
+services:
+  elasticsearchuvmaster1:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "registry.imanage.com/imanagelabs/elasticsearch7:latest"
+    mem_limit: "1536m"
+    restart: on-failure:12
+    environment:
+      RACK_ID: "rack3"
+      SERVER_ID: "caribbean"
+      DISK_ID: "disk301"
+      NODE_NAME: "master1"
+      CLUSTER_NAME: "chicago"
+      ES_CLUSTER_NAME: es7-chicago-${DISCOVERY_HOST}
+      ES_NETWORKING: "bridged"
+      SERVICE_9900_NAME: "es7-chicago-elasticsearchtransport"
+      SERVICE_9950_NAME: "es7-chicago-elasticsearch"
+      NODE_TYPE: allinone
+      DOCKER_FIX: '                                        '

@@ -1,0 +1,21 @@
+version: "2.2"
+services:
+  elasticsearchuvmaster1:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "elasticsearch7:latest"
+    mem_limit: "1536m"
+    restart: on-failure:12
+    environment:
+      RACK_ID: "rack3"
+      SERVER_ID: "caribbean"
+      DISK_ID: "disk301"
+      NODE_NAME: "master1"
+      CLUSTER_NAME: "venus"
+      ES_CLUSTER_NAME: venus-${DISCOVERY_HOST}
+      ES_NETWORKING: "bridged"
+      SERVICE_9900_NAME: "venus-elasticsearchtransport"
+      SERVICE_9950_NAME: "venus-elasticsearch"
+      NODE_TYPE: allinone
+      DOCKER_FIX: '                                        '
