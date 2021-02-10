@@ -1,0 +1,15 @@
+version: "2.2"
+services:
+  dmprocessor:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "registry.imanage.com/imanagelabs/dm-processor-submitter:2.0.172"
+    command: "m-dm-processor-submitter"
+    mem_limit: "256m"
+    restart: on-failure:12
+    environment:
+      NUM_NIMBUSES: 1
+      EPT_NUM_WORKERS: 2
+      KU_SUBMISSION_ENABLED: "false"
+    

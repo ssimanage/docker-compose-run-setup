@@ -4,7 +4,8 @@ services:
     extends:
       file: "common.yml"
       service: "common"
-    image: "registry.imanage.com/m-extraction:1.2.60"
+    image: "registry.imanage.com/m-extraction:1.2.71"
+    container_name: "cr_extraction_1"
     mem_limit: "1024m"
     restart: on-failure:3
     scale: 1
