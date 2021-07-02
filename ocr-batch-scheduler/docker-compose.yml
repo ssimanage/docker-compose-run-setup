@@ -1,0 +1,12 @@
+version: "2.2"
+services:
+  conductor-worker:
+    extends:
+      file: "common.yml"
+      service: "common"
+    image: "ocr-batch-scheduler:latest"
+    container_name: "cr_ocr-batch-scheduler-run-1"
+    mem_limit: "1024m"
+    restart: on-failure:2
+    environment:
+      SERVICE_5000_NAME: "ocr-batch-scheduler-docker"
